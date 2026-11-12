@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "sizes": {
+    "train": 725,
+    "validation": 64,
+    "test": 232
+  },
+  "train_by_kind": {
+    "pubmedqa/pubmed_qa": 500,
+    "hospital/patient": 13,
+    "hospital/protocol_qa": 159,
+    "hospital/faq": 22,
+    "hospital/refusal": 19,
+    "hospital/template": 7,
+    "hospital/out_of_scope": 5
+  },
+  "validation_by_kind": {
+    "hospital/template": 1,
+    "pubmedqa/pubmed_qa": 40,
+    "hospital/protocol_qa": 17,
+    "hospital/refusal": 2,
+    "hospital/patient": 2,
+    "hospital/faq": 2
+  },
+  "test_by_kind": {
+    "pubmedqa/pubmed_qa": 200,
+    "hospital/protocol_qa": 20,
+    "hospital/refusal": 6,
+    "hospital/out_of_scope": 3,
+    "hospital/patient": 3
+  },
+  "pubmedqa_decision_distribution": {
+    "train": {
+      "no": 0.338,
+      "yes": 0.554,
+      "maybe": 0.108
+    },
+    "test": {
+      "yes": 0.565,
+      "no": 0.34,
+      "maybe": 0.095
+    }
+  },
+  "anonymization_replacements": {},
+  "curation": {}
+}

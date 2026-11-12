@@ -1,0 +1,166 @@
+[
+  {
+    "id": "PROT-SEPSE-01",
+    "title": "Triagem e manejo inicial de suspeita de sepse",
+    "topic": "suspeita de sepse",
+    "area": "Emergência / Clínica médica",
+    "version": "1.2",
+    "keywords": "sepse infecção febre confusão mental hipotensão taquicardia lactato hemocultura choque séptico",
+    "sections": {
+      "objetivo": "Padronizar a identificação precoce e o manejo inicial de pacientes adultos com suspeita de sepse, reduzindo o tempo até a primeira avaliação médica e o início do tratamento.",
+      "criterios": "Suspeita de infecção associada a pelo menos dois sinais: frequência cardíaca acima de 90 bpm, frequência respiratória acima de 20 irpm, temperatura acima de 38 °C ou abaixo de 36 °C, pressão arterial sistólica igual ou inferior a 100 mmHg ou alteração do nível de consciência.",
+      "conduta_inicial": "Avisar imediatamente o médico plantonista, garantir acesso venoso e monitorização contínua e registrar os sinais vitais. A antibioticoterapia e a reposição de fluidos são definidas e prescritas exclusivamente pelo médico responsável, conforme o protocolo de antimicrobianos vigente.",
+      "exames": "Coletar lactato e hemoculturas antes do início do antibiótico, além de hemograma, creatinina, bilirrubinas e gasometria conforme solicitação médica.",
+      "escalonamento": "Acionar a equipe de terapia intensiva se houver hipotensão persistente, lactato elevado ou piora do nível de consciência após a avaliação inicial."
+    }
+  },
+  {
+    "id": "PROT-DOR-TORACICA-01",
+    "title": "Avaliação de dor torácica aguda",
+    "topic": "dor torácica",
+    "area": "Emergência / Cardiologia",
+    "version": "2.0",
+    "keywords": "dor torácica precordial opressiva infarto síndrome coronariana troponina eletrocardiograma ECG supra ST",
+    "sections": {
+      "objetivo": "Garantir avaliação rápida de pacientes com dor torácica aguda para identificar síndrome coronariana aguda e outras causas graves.",
+      "criterios": "Dor ou desconforto torácico de início agudo, especialmente com irradiação para braço, mandíbula ou dorso, ou associado a sudorese, náusea ou dispneia.",
+      "conduta_inicial": "Realizar eletrocardiograma de 12 derivações em até 10 minutos da chegada, monitorizar o paciente e comunicar o médico imediatamente. Medicações são prescritas somente pelo médico.",
+      "exames": "Troponina seriada conforme o intervalo definido pelo médico, eletrocardiograma seriado, radiografia de tórax e hemograma.",
+      "escalonamento": "Acionar a cardiologia imediatamente se o eletrocardiograma mostrar supradesnivelamento do segmento ST ou se houver instabilidade hemodinâmica."
+    }
+  },
+  {
+    "id": "PROT-HAS-01",
+    "title": "Seguimento ambulatorial de hipertensão arterial",
+    "topic": "hipertensão arterial",
+    "area": "Ambulatório / Clínica médica",
+    "version": "1.4",
+    "keywords": "hipertensão arterial pressão alta PA aferição anti-hipertensivo creatinina potássio crise hipertensiva",
+    "sections": {
+      "objetivo": "Orientar o seguimento ambulatorial de pacientes com hipertensão arterial sistêmica, com foco em controle pressórico e prevenção de lesão de órgão-alvo.",
+      "criterios": "Pressão arterial medida em consultório igual ou superior a 140/90 mmHg em pelo menos duas ocasiões distintas, com confirmação do diagnóstico pelo médico.",
+      "conduta_inicial": "Aferir a pressão arterial com técnica padronizada, revisar a adesão ao tratamento e os hábitos de vida e registrar os valores no prontuário. Ajustes de medicação são decisão do médico.",
+      "exames": "Exames de rotina anuais: creatinina, potássio, urina tipo 1, glicemia de jejum, perfil lipídico e eletrocardiograma.",
+      "escalonamento": "Encaminhar para avaliação médica no mesmo dia se a pressão arterial for igual ou superior a 180/120 mmHg com sintomas como cefaleia intensa, dor torácica ou alteração neurológica."
+    }
+  },
+  {
+    "id": "PROT-DM2-01",
+    "title": "Seguimento de diabetes mellitus tipo 2",
+    "topic": "diabetes tipo 2",
+    "area": "Ambulatório / Endocrinologia",
+    "version": "1.1",
+    "keywords": "diabetes tipo 2 glicemia hemoglobina glicada HbA1c microalbuminúria fundo de olho pé diabético hipoglicemia",
+    "sections": {
+      "objetivo": "Padronizar o seguimento de pacientes com diabetes mellitus tipo 2 para controle glicêmico e prevenção de complicações crônicas.",
+      "criterios": "Pacientes com diagnóstico confirmado de diabetes mellitus tipo 2 em acompanhamento ambulatorial.",
+      "conduta_inicial": "Revisar glicemias e adesão ao tratamento, examinar os pés e orientar alimentação e atividade física. Mudanças de tratamento são definidas pelo médico.",
+      "exames": "Hemoglobina glicada a cada 3 a 6 meses; anualmente, microalbuminúria, creatinina, perfil lipídico, fundo de olho e exame dos pés.",
+      "escalonamento": "Encaminhar ao médico no mesmo dia em caso de glicemia capilar acima de 300 mg/dL com sintomas, vômitos, desidratação ou alteração do nível de consciência; hipoglicemia recorrente também exige reavaliação médica."
+    }
+  },
+  {
+    "id": "PROT-AVC-01",
+    "title": "Atendimento inicial de AVC agudo",
+    "topic": "AVC agudo",
+    "area": "Emergência / Neurologia",
+    "version": "1.3",
+    "keywords": "AVC acidente vascular cerebral déficit neurológico fraqueza facial afasia tomografia de crânio código AVC",
+    "sections": {
+      "objetivo": "Reduzir o tempo entre a chegada e a avaliação de pacientes com suspeita de acidente vascular cerebral agudo.",
+      "criterios": "Início súbito de déficit neurológico focal, como fraqueza facial, fraqueza em um dos membros, alteração da fala ou alteração da visão.",
+      "conduta_inicial": "Registrar o horário exato de início dos sintomas (ou do último momento em que o paciente foi visto bem), medir a glicemia capilar, monitorizar e acionar imediatamente o médico e a neurologia. A decisão sobre terapias de reperfusão é exclusiva do médico.",
+      "exames": "Tomografia de crânio sem contraste com prioridade, glicemia capilar, eletrocardiograma, hemograma, coagulograma e função renal.",
+      "escalonamento": "Acionar o código AVC e a neurologia assim que houver suspeita, sem aguardar resultados de exames laboratoriais."
+    }
+  },
+  {
+    "id": "PROT-PNEUMONIA-01",
+    "title": "Pneumonia adquirida na comunidade em adultos",
+    "topic": "pneumonia adquirida na comunidade",
+    "area": "Emergência / Pneumologia",
+    "version": "1.5",
+    "keywords": "pneumonia tosse febre dispneia infiltrado radiografia de tórax CURB-65 saturação oxigênio DPOC",
+    "sections": {
+      "objetivo": "Padronizar a avaliação de gravidade e o manejo inicial de adultos com pneumonia adquirida na comunidade.",
+      "criterios": "Tosse, febre e dispneia associadas a infiltrado novo na radiografia de tórax, com avaliação de gravidade pelo escore CURB-65: confusão, ureia elevada, frequência respiratória igual ou superior a 30, pressão arterial baixa e idade igual ou superior a 65 anos.",
+      "conduta_inicial": "Medir a saturação de oxigênio e os sinais vitais, calcular o CURB-65 e comunicar o médico, que decide sobre internação e antibioticoterapia.",
+      "exames": "Radiografia de tórax, hemograma, ureia, creatinina, proteína C reativa e oximetria; hemoculturas nos casos graves, conforme solicitação médica.",
+      "escalonamento": "Considerar avaliação para terapia intensiva se houver saturação persistentemente baixa apesar de oxigênio suplementar, hipotensão ou CURB-65 alto."
+    }
+  },
+  {
+    "id": "PROT-IRA-01",
+    "title": "Identificação e manejo inicial de lesão renal aguda",
+    "topic": "lesão renal aguda",
+    "area": "Internação / Nefrologia",
+    "version": "1.0",
+    "keywords": "lesão renal aguda insuficiência renal creatinina elevada diurese oligúria hipercalemia potássio nefrotóxico",
+    "sections": {
+      "objetivo": "Identificar precocemente a lesão renal aguda em pacientes internados e reduzir a exposição a fatores agravantes.",
+      "criterios": "Elevação da creatinina sérica em pelo menos 0,3 mg/dL em 48 horas, ou aumento de 1,5 vez o valor basal em 7 dias, ou redução da diurese abaixo de 0,5 mL/kg/h por 6 horas.",
+      "conduta_inicial": "Comunicar o médico, monitorar o balanço hídrico e a diurese e solicitar revisão da lista de medicamentos pela farmácia clínica para identificar substâncias nefrotóxicas. Suspensões ou ajustes são decisão médica.",
+      "exames": "Creatinina e ureia seriadas, potássio, gasometria, urina tipo 1 e ultrassonografia de rins e vias urinárias conforme indicação médica.",
+      "escalonamento": "Acionar a nefrologia se houver hipercalemia, acidose metabólica grave, sobrecarga de volume refratária ou ausência de diurese."
+    }
+  },
+  {
+    "id": "PROT-QUEDAS-01",
+    "title": "Prevenção de quedas em pacientes internados",
+    "topic": "prevenção de quedas",
+    "area": "Internação / Enfermagem",
+    "version": "2.1",
+    "keywords": "queda risco de queda internado idoso escala de risco pulseira grades cama sedativos marcha",
+    "sections": {
+      "objetivo": "Prevenir quedas e lesões associadas em pacientes internados.",
+      "criterios": "Aplicar a escala de risco de queda na admissão e a cada 24 horas; pontuação elevada, idade avançada, uso de sedativos ou dificuldade de marcha caracterizam alto risco.",
+      "conduta_inicial": "Identificar o paciente de alto risco com pulseira e sinalização no leito, manter a cama baixa com grades conforme a política, deixar o botão de chamada ao alcance e orientar paciente e acompanhante.",
+      "exames": "Não há exames obrigatórios; em caso de queda, o médico define a necessidade de exames de imagem e outras avaliações.",
+      "escalonamento": "Em caso de queda, não mobilizar o paciente antes da avaliação, comunicar o médico imediatamente e registrar o evento no sistema de notificação de incidentes."
+    }
+  },
+  {
+    "id": "PROT-TEV-01",
+    "title": "Avaliação de risco e profilaxia de tromboembolismo venoso",
+    "topic": "profilaxia de tromboembolismo venoso",
+    "area": "Internação / Clínica médica",
+    "version": "1.2",
+    "keywords": "tromboembolismo venoso trombose embolia pulmonar profilaxia imobilidade risco de sangramento edema assimétrico",
+    "sections": {
+      "objetivo": "Padronizar a avaliação do risco de tromboembolismo venoso em pacientes internados.",
+      "criterios": "Avaliar o risco na admissão e reavaliar diariamente, considerando imobilidade, cirurgia recente, câncer, idade avançada, obesidade e antecedente de trombose.",
+      "conduta_inicial": "Registrar a avaliação de risco no prontuário e comunicar o médico quando o risco for elevado. A escolha da profilaxia medicamentosa ou mecânica é do médico, considerando também o risco de sangramento.",
+      "exames": "Hemograma com plaquetas e função renal antes de iniciar profilaxia medicamentosa, conforme solicitação médica.",
+      "escalonamento": "Comunicar imediatamente o médico se houver sinais de trombose, como edema assimétrico de membro, ou de embolia pulmonar, como dispneia súbita e dor torácica."
+    }
+  },
+  {
+    "id": "PROT-EXAMES-01",
+    "title": "Exames pendentes e comunicação de resultados críticos",
+    "topic": "exames pendentes",
+    "area": "Transversal / Enfermagem e Laboratório",
+    "version": "1.0",
+    "keywords": "exames pendentes atraso resultado crítico laboratório comunicação urgência coleta alerta",
+    "sections": {
+      "objetivo": "Garantir que os exames solicitados sejam realizados no prazo e que resultados críticos sejam comunicados à equipe médica.",
+      "criterios": "Exame de rotina solicitado e não realizado há mais de 24 horas é considerado pendente em atraso; exame de urgência pendente há mais de 2 horas também gera alerta.",
+      "conduta_inicial": "A enfermagem verifica a causa do atraso (coleta, transporte ou laboratório), registra no sistema e comunica o médico responsável quando o exame for necessário para a decisão clínica.",
+      "resultados_criticos": "Resultados críticos, como potássio, lactato ou troponina fora dos limites definidos pelo laboratório, devem ser comunicados ao médico em até 30 minutos.",
+      "escalonamento": "Se o atraso persistir após a comunicação, escalonar para a coordenação de enfermagem e para a chefia do laboratório."
+    }
+  },
+  {
+    "id": "PROT-PRESCRICAO-01",
+    "title": "Limites de atuação do assistente virtual e validação humana",
+    "topic": "limites do assistente virtual",
+    "area": "Governança / Segurança do paciente",
+    "version": "1.0",
+    "keywords": "prescrição prescrever receita dose medicamento validação humana assistente virtual limites auditoria log fonte",
+    "sections": {
+      "escopo": "Toda sugestão do assistente virtual é apoio à decisão e não constitui prescrição, diagnóstico ou ordem médica.",
+      "conduta_inicial": "O assistente nunca prescreve medicamentos, doses ou condutas definitivas; apresenta apenas o que os protocolos preveem, com a fonte citada, para validação do médico responsável.",
+      "auditoria": "Todo uso do assistente é registrado em log de auditoria, com a pergunta, as fontes consultadas e a decisão de validação do médico.",
+      "excecoes": "Em caso de pergunta fora dos protocolos ou de resposta sem fonte, o assistente informa a limitação e orienta a consulta direta ao médico responsável."
+    }
+  }
+]

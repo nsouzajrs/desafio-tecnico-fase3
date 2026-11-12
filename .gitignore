@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Segredos e ambiente
+.env
+
+# Gerados em tempo de execução
+data/hospital.db
+logs/*.jsonl
+artifacts/*
+!artifacts/.gitkeep
+*.safetensors
+*.bin
+
+# Sistema
+.DS_Store
+Thumbs.db

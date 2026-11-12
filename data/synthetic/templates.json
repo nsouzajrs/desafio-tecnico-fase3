@@ -1,0 +1,22 @@
+[
+  {
+    "id": "TEMPL-LAUDO-RX",
+    "title": "laudo de radiografia de tórax",
+    "text": "LAUDO - RADIOGRAFIA DE TÓRAX\nIdentificação do paciente: [ID DO PACIENTE]\nData do exame: [DATA]\nIndicação clínica: [INDICAÇÃO]\nTécnica: incidências póstero-anterior e perfil.\nAchados: [DESCREVER ACHADOS]\nImpressão diagnóstica: [IMPRESSÃO]\nMédico responsável: [NOME E CRM]"
+  },
+  {
+    "id": "TEMPL-LAUDO-ECG",
+    "title": "laudo de eletrocardiograma",
+    "text": "LAUDO - ELETROCARDIOGRAMA DE 12 DERIVAÇÕES\nIdentificação do paciente: [ID DO PACIENTE]\nData e hora do exame: [DATA E HORA]\nIndicação clínica: [INDICAÇÃO]\nRitmo: [RITMO]\nFrequência cardíaca: [FC]\nSegmento ST e onda T: [DESCREVER]\nConclusão: [CONCLUSÃO]\nMédico responsável: [NOME E CRM]"
+  },
+  {
+    "id": "TEMPL-LAUDO-HEMOGRAMA",
+    "title": "laudo de hemograma",
+    "text": "LAUDO - HEMOGRAMA COMPLETO\nIdentificação do paciente: [ID DO PACIENTE]\nData da coleta: [DATA]\nSérie vermelha: [VALORES]\nSérie branca: [VALORES]\nPlaquetas: [VALOR]\nObservações: [OBSERVAÇÕES]\nResponsável técnico: [NOME E REGISTRO]"
+  },
+  {
+    "id": "TEMPL-RECEITA",
+    "title": "receita médica",
+    "text": "RECEITA MÉDICA\nIdentificação do paciente: [ID DO PACIENTE]\nData: [DATA]\nMedicamento, dose e posologia: [PREENCHER PELO MÉDICO]\nOrientações ao paciente: [PREENCHER PELO MÉDICO]\nAssinatura e CRM do médico: [ASSINATURA E CRM]\nObservação: documento válido somente após preenchimento e assinatura do médico responsável."
+  }
+]
