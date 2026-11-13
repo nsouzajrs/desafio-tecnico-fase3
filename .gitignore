@@ -20,3 +20,6 @@ artifacts/*
 # Sistema
 .DS_Store
 Thumbs.db
+
+token*.txt
+*token*.txt
