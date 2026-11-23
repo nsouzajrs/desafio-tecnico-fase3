@@ -1,0 +1,23 @@
+{
+  "model": "meta-llama/Llama-3.2-3B-Instruct",
+  "adapter": "/content/fase3_local/run1_3b/final_adapter",
+  "n_examples": 132,
+  "finetuned": {
+    "pubmedqa": {"n": 100, "rouge_l": 0.3003, "decision_correct": 0.79, "decision_missing": 0.0},
+    "hospital": {"n": 32, "rouge_l": 0.9523, "citation_recall": 0.9609, "citation_precision": 0.9844, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.9688, "refusal": 1.0, "no_base": 1.0},
+    "hospital/protocol_qa": {"n": 20, "rouge_l": 0.9959, "citation_recall": 1.0, "citation_precision": 1.0, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 1.0},
+    "hospital/refusal": {"n": 6, "rouge_l": 0.9504, "citation_recall": 1.0, "citation_precision": 1.0, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 1.0, "refusal": 1.0},
+    "hospital/out_of_scope": {"n": 3, "rouge_l": 1.0, "citation_recall": 1.0, "citation_precision": 1.0, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 1.0, "no_base": 1.0},
+    "hospital/patient": {"n": 3, "rouge_l": 0.6175, "citation_recall": 0.5833, "citation_precision": 0.8333, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.6667}
+  },
+  "finetuned_seconds": 489.2,
+  "base": {
+    "pubmedqa": {"n": 100, "rouge_l": 0.0767, "decision_correct": 0.65, "decision_missing": 0.07},
+    "hospital": {"n": 32, "rouge_l": 0.3246, "citation_recall": 0.5547, "citation_precision": 0.599, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.0, "refusal": 0.0, "no_base": 0.6667},
+    "hospital/protocol_qa": {"n": 20, "rouge_l": 0.3892, "citation_recall": 0.8, "citation_precision": 0.8, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.0},
+    "hospital/refusal": {"n": 6, "rouge_l": 0.227, "citation_recall": 0.1667, "citation_precision": 0.3333, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.0, "refusal": 0.0},
+    "hospital/out_of_scope": {"n": 3, "rouge_l": 0.2135, "citation_recall": 0.0, "citation_precision": 0.0, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.0, "no_base": 0.6667},
+    "hospital/patient": {"n": 3, "rouge_l": 0.2004, "citation_recall": 0.25, "citation_precision": 0.3889, "hallucinated_citation": 0.0, "dose": 0.0, "disclaimer": 0.0}
+  },
+  "base_seconds": 492.1
+}

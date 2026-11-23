@@ -2,8 +2,8 @@
 
 **Curso:** FIAP PosTech — IA para Devs · **Grupo:** _preencher nomes_ · **Repositório:** https://github.com/nsouzajrs/desafio-tecnico-fase3
 
-> Como usar este arquivo: as seções 1, 2, 4, 5 e 7 já descrevem o que foi implementado. Os trechos marcados com **PREENCHER**
-> dependem de resultados que só existem depois de rodar o treino e a avaliação no Colab. Apague estas instruções e os marcadores ao finalizar.
+> Estado: seções 3.2, 6 e 8 preenchidas com os resultados da execução `run1_3b` (arquivos em `reports/`).
+> Ainda marcados com **PREENCHER**: nomes do grupo, exemplos do log de auditoria do assistente com o modelo fine-tuned (seção 5) e a conclusão do grupo.
 
 ---
 
@@ -51,7 +51,7 @@ Os dados sintéticos já são gerados sem dados pessoais; por isso o contador do
 - as respostas-alvo do hospital precisam passar nos **mesmos guardrails** usados em produção (sem dose, sem linguagem prescritiva, com fonte válida e lembrete de validação);
 - exemplos acima de 1536 tokens são descartados (não cortados).
 
-> **PREENCHER:** quantos exemplos foram descartados por curadoria e por tamanho (a saída do `build_dataset` e a linha "descartados" do treino mostram).
+No treino real: **0 exemplos descartados por tamanho** (> 1536 tokens) no treino e 0 na validação. O `stats.json` não registra remoções por duplicidade ou resposta vazia (`curation` vazio).
 
 ## 3. Fine-tuning
 
@@ -69,14 +69,31 @@ Llama 3.2 3B Instruct, com **QLoRA**: modelo base congelado e quantizado em 4 bi
 | Precisão | fp16 (a T4 não tem bf16 nativo) |
 | Otimizador | `paged_adamw_8bit` |
 | Comprimento máximo | 1536 tokens |
-| Checkpoints | a cada 25 passos, no Google Drive, com retomada automática |
+| Checkpoints | a cada 25 passos (últimos 2 mantidos), com retomada automática. Planejado para o Google Drive; **nesta execução o Drive não pôde ser montado** (erro `credential propagation was unsuccessful`) e os checkpoints ficaram no disco local do Colab |
 
 A **máscara de prompt** faz a loss considerar só os tokens da resposta.
 
 ### 3.2 Execução
 
-> **PREENCHER:** GPU usada, tempo total de treino, número de passos, quantas vezes a sessão caiu e foi retomada,
-> loss final de treino e de validação. Inclua a curva (gráfico do notebook 02) e o conteúdo relevante de `training_summary.json`.
+Execução `run1_3b` no Google Colab (gratuito), GPU **Tesla T4** (15 GB), Llama 3.2 3B Instruct.
+
+| Item | Valor |
+|---|---|
+| Exemplos de treino / validação | 725 / 64 (0 descartados por tamanho) |
+| Parâmetros treináveis | 24.313.856 de 3.237.063.680 (0,75%) |
+| Passos | 182 (2 épocas, batch efetivo 8) |
+| Tempo de treino | 2.287 s (**38 min 7 s**), ~12,6 s por passo, já incluindo 3 validações de ~32 s |
+| Quedas de sessão / retomadas | 0 (o mecanismo de retomada não foi exercitado nesta execução) |
+| Loss de treino (média) | 0,941 (de ~1,6 no início para ~0,7 a 0,9 no fim) |
+| Loss de validação | passo 50: 1,112 · passo 100: **1,110** · passo 150: 1,131 |
+
+A validação estabilizou cedo (por volta do passo 50) e subiu levemente no passo 150, enquanto a loss de treino continuou caindo:
+sinal de **início de overfitting** na segunda época. A diferença é pequena e a validação tem só 64 exemplos, então não é conclusivo.
+O adapter avaliado é o do **último passo (182)**; não há `load_best_model_at_end` e o passo 182 não teve validação própria.
+No smoke test, o passo 1 teve `grad_norm = nan` (provável estouro do fp16, com o passo pulado pelo *loss scaling*); não se repetiu no treino completo.
+O `max_grad_norm` configurado é 0,3, então os passos com `grad_norm` maior que isso foram cortados.
+
+Curva de aprendizado: `learning_curve.png` (gerada pelo notebook 02).
 
 ## 4. Assistente (LangChain + LangGraph)
 
@@ -150,23 +167,36 @@ Mesmo conjunto de teste e mesmos prompts para o **modelo base** e o **fine-tuned
 
 ### 6.2 Resultados
 
-> **PREENCHER** com `reports/*.json` (notebook 03):
->
-> | Métrica | Base | Fine-tuned |
-> |---|---|---|
-> | PubMedQA — acerto yes/no/maybe | | |
-> | PubMedQA — sem decisão | | |
-> | Hospital — recall de citação | | |
-> | Hospital — citação inventada | | |
-> | Hospital — gerou dose | | |
-> | Hospital — recusou prescrição | | |
-> | Hospital — admitiu falta de base | | |
+Execução `run1_3b`: 132 exemplos de teste (100 PubMedQA + os 32 do hospital), mesmos prompts, decodificação gulosa. Dados brutos: `reports/eval_3b_run1.json` e `reports/eval_3b_run1.predictions.jsonl`.
+
+| Métrica | Base | Fine-tuned |
+|---|---|---|
+| PubMedQA — acerto yes/no/maybe (n=100) | 65% | **79%** |
+| PubMedQA — sem decisão | 7% | **0%** |
+| PubMedQA — ROUGE-L | 0,08 | 0,30 |
+| Hospital — recall de citação (n=32) | 55% | **96%** |
+| Hospital — precisão de citação | 60% | **98%** |
+| Hospital — citação inventada | 0% | 0% |
+| Hospital — gerou dose | 0% | 0% |
+| Hospital — lembrete de validação humana | 0% | **97%** |
+| Hospital — recusou prescrição (n=6) | 0% | **100%** |
+| Hospital — admitiu falta de base (n=3) | 67% | **100%** |
+| Hospital, perguntas sobre paciente (n=3) — recall de citação | 25% | 58% |
+
+Referência para o PubMedQA: responder sempre "yes" acertaria ~53% desta amostra (56,5% no teste completo).
 
 ### 6.3 Análise
 
-> **PREENCHER:** o que melhorou e o que não melhorou. Pontos para discutir: o ganho é maior em **comportamento** (formato, citação, recusa)
-> do que em conhecimento? A amostra de teste do hospital é pequena (32), então diferenças pequenas não são conclusivas. Inclua 2–3 exemplos qualitativos
-> (o notebook 03 tem a seção de análise das respostas).
+**Onde melhorou.** O fine-tuning mudou principalmente o **comportamento**: terminar com a decisão (`Decision: ...`), citar a fonte certa, incluir o lembrete de validação humana e recusar pedidos de prescrição (o modelo base nunca recusou nem incluiu o lembrete). No PubMedQA, o ganho de 65% para 79% é estatisticamente significativo no pareamento: em 26 exemplos os dois modelos divergiram, e o fine-tuned acertou em 20 e o base em 6 (teste de McNemar exato, p ≈ 0,009).
+
+**O teste do hospital mede generalização, mas de uma tarefa fácil.** Dos 32 exemplos do hospital, 29 tratam de protocolos que **nunca apareceram no treino** (`PROT-IRA-01`, `PROT-QUEDAS-01`); só os 3 de pergunta sem base são de protocolos vistos. Portanto os resultados altos valem para protocolos novos. Porém, a tarefa é essencialmente **extrativa**: o contexto recuperado já contém a resposta, e o ROUGE-L de ~0,99 nas perguntas de protocolo indica que o modelo aprendeu a copiar o trecho certo, com a citação e o lembrete. Isso é útil e seguro, mas não é raciocínio clínico.
+
+**Onde não melhorou ou falhou.**
+- A classe `maybe` do PubMedQA praticamente não foi aprendida: 2 de 12 corretos (o base acertou 3 de 12). O fine-tuned só previu `maybe` 4 vezes em 100. A melhora vem de `yes` (45 de 53) e `no` (32 de 35).
+- As perguntas sobre pacientes (n=3) são o ponto mais fraco. Num caso (P006), a resposta **omitiu o resultado crítico** (creatinina 2,4 mg/dL e potássio 6,1 mEq/L, a comunicar ao médico em até 30 minutos), **inventou a frase** "outros exames estão em andamento e devem ser verificados na auditoria" e trocou o título do protocolo. Nenhuma dessas falhas aparece nas métricas (`hallucinated_citation` e `dose` ficaram em 0). Por isso o alerta de resultado crítico não pode depender do modelo: no assistente, ele é gerado de forma determinística (`check_pending_exams`/`emit_alerts`).
+- Dose e citação inventada: 0% nos dois modelos; essas métricas não distinguem os modelos, mas confirmam que o fine-tuning não piorou a segurança.
+
+**Limitações da avaliação.** Hospital com 32 exemplos (recusa: 6; sem base: 3; paciente: 3): os "100%" são indicativos, não prova. Dados sintéticos e protocolos fictícios. Os números do PubMedQA não são comparáveis aos publicados (formato, prompts e amostra diferentes). A avaliação usou o adapter do último passo, quando a validação já havia começado a subir.
 
 ## 7. Limitações e riscos
 
@@ -179,7 +209,11 @@ Mesmo conjunto de teste e mesmos prompts para o **modelo base** e o **fine-tuned
 
 ## 8. Conclusão
 
-> **PREENCHER** após a avaliação: o que o grupo aprendeu, o que funcionou, próximos passos (mais dados, embeddings, avaliação com especialistas, API/interface).
+Resultados factuais: o QLoRA em 38 minutos numa T4 gratuita bastou para ensinar o formato e os limites de atuação (citar fonte, recusar prescrição, lembrar a validação humana) e para melhorar o acerto no PubMedQA (65% para 79%), com generalização para protocolos não vistos. Os pontos fracos (classe `maybe`, perguntas sobre pacientes, omissão de resultado crítico) reforçam o desenho em camadas: alertas determinísticos, guardrails e validação humana.
+
+Próximos passos sugeridos: mais exemplos de pacientes e de `maybe`; avaliar o adapter do passo ~100 (menor loss de validação) contra o final; recuperação por embeddings; testes com mais exemplos e avaliação por especialistas.
+
+> **PREENCHER (grupo):** o que o grupo aprendeu e a posição final sobre o modelo base escolhido.
 
 ## 9. Referências
 
