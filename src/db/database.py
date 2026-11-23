@@ -117,10 +117,15 @@ def list_patient_ids(conn: sqlite3.Connection) -> list[str]:
     return [r["id"] for r in conn.execute("SELECT id FROM patients ORDER BY id")]
 
 
-def ensure_db(db_path: str | Path = DB_PATH) -> Path:
-    """Cria e popula o banco se ainda não existir."""
+def ensure_db(db_path: str | Path = DB_PATH, refresh: bool = False) -> Path:
+    """Cria e popula o banco se ainda não existir.
+
+    Os exames guardam a data/hora em que foram solicitados (relativa ao momento da criação do banco).
+    Por isso, num banco antigo as "horas pendentes" só crescem. Com refresh=True o banco é repopulado
+    e os tempos voltam aos valores do cenário (ex.: lactato do P001 pendente há 3 h).
+    """
     path = Path(db_path)
-    if not path.exists():
+    if refresh or not path.exists():
         conn = connect(path)
         seed(conn)
         conn.close()

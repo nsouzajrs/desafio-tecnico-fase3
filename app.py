@@ -38,9 +38,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--physician", default="medico.demo", help="identificação de quem valida a sugestão")
     p.add_argument("--no-validate", action="store_true", help="não pede a decisão do médico ao final")
     p.add_argument("--list-patients", action="store_true")
+    p.add_argument("--keep-db", action="store_true", help="não repopula o banco (as horas de exames pendentes continuam crescendo)")
     args = p.parse_args(argv)
 
-    ensure_db(DB_PATH)
+    ensure_db(DB_PATH, refresh=not args.keep_db)  # por padrão, recria os pacientes sintéticos com os tempos do cenário
     if args.list_patients:
         conn = connect(DB_PATH)
         for pid in list_patient_ids(conn):
